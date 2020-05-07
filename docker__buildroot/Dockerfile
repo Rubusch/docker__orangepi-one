@@ -1,4 +1,4 @@
-FROM ubuntu:19.10
+FROM ubuntu:20.04
 MAINTAINER Lothar Rubusch <lotophagon@protonmail.com>
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
