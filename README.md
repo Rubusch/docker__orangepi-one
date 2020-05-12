@@ -37,3 +37,15 @@ $ docker images
 
 $ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/$USER/buildroot/dl -v $PWD/output:/home/$USER/buildroot/output rubuschl/orangepi-buildroot:20191104161353 /bin/bash
 ```
+
+
+## Image
+
+**NB**: use kernel 5.2 and u-boot 2019.07 as minimum combination for the Orange Pi One.  
+
+### Login
+
+u: root  
+p: N/A  
+
+
