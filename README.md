@@ -41,7 +41,13 @@ $ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/
 
 ## Image
 
-**NB**: use kernel 5.2 and u-boot 2019.07 as minimum combination for the Orange Pi One.  
+For debugging the ``data abort`` issue when booting into the kernel, disassemble the u-boot to better understand what went wrong  
+
+```
+$ arm-linux-gnueabihf-objdump -sD u-boot > u-boot.txt
+```
+
+**NB**: alternatively, use kernel 5.2 and u-boot 2019.07 as minimum combination for the Orange Pi One.  
 
 ### Login
 
