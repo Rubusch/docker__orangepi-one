@@ -59,4 +59,6 @@ p: N/A
 
 TODO: setup.jpg
 
-![GPIOs](pics/OrangePiOne-pinout.png)
+find the following gpio numbering mapped to the pin numbering  
+
+![GPIOs](pics/rpi-gpio-pinout.png)
