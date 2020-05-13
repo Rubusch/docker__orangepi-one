@@ -62,3 +62,27 @@ TODO: setup.jpg
 find the following gpio numbering mapped to the pin numbering  
 
 ![GPIOs](pics/rpi-gpio-pinout.png)
+
+### Example: gpio10
+
+gpio10 will trigger on pin 19, make the gpio accessible, then set access direction "out" (write) or "in" (reading)  
+
+then configure the following on the board  
+
+```
+$ echo 10 > /sys/class/gpio/export
+$ echo "out" > /sys/class/gpio/gpio10/direction
+```
+
+turn on  
+
+```
+$ echo 1 > /sys/class/gpio/gpio10/value
+```
+
+turn off  
+
+```
+$ echo 0 > /sys/class/gpio/gpio10/value
+```
+
