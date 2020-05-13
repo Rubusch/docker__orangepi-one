@@ -55,3 +55,8 @@ u: root
 p: N/A  
 
 
+### Linkerkit Relais Shield
+
+TODO: setup.jpg
+
+![GPIOs](pics/OrangePiOne-pinout.png)
