@@ -69,11 +69,12 @@ control the target device via OrangePi and Linker Kit Shield:
 
 #### Configuration
 
-make sure the kernel has ``CONFIG_SERIAL_ALTERA_UART`` set, it's benefitial also to turn on additional things such as ``/proc/config.gz`` support  
+make sure the kernel has ``CONFIG_SERIAL_ALTERA_UART`` set, it's benefitial also to turn on additional things such as ``/proc/config.gz`` support - TODO verify   
 
 make sure the board has the following onboard:  
  *  ``screen``
  *  ``dropbear``
+ *  ``usb/serial`` support (drivers -> usb drivers -> section serial, enable generic support (/dev/ttyUSB0 will appear
  *  ``eudev + tempfs`` Build (convenience)
  * turn off taking eth0 to automatic dhcp (when using fixed IP addresses)
 
@@ -83,6 +84,28 @@ some gpio libs/tools might be helpful, find the following gpio numbering mapped 
 
 in case, configure network and/or set a root password   
 
+```
+# vi /etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.168.200.20
+netmask 255.255.255.0
+```
+
+in case, place a ``powercycle.sh`` script in /root  
+```
+# vi /root/powercycle.sh
+
+#!/bin/sh
+GPIO=/sys/class/gpio/gpio10/value
+echo 1 > $GPIO
+sleep 1
+echo 0 > $GPIO
+```
 
 #### Setting gpio10 as an example
 
