@@ -55,15 +55,36 @@ u: root
 p: N/A  
 
 
-### Linkerkit Relais Shield
+### Example: Use the OrangePi as lowcost Remote Lab Automation Solution
+
+Needed: Linkerkit Relais Shield, relais and cable, some wires  
 
 TODO: setup.jpg
 
-find the following gpio numbering mapped to the pin numbering  
+control the target device via OrangePi and Linker Kit Shield:  
+ *  eth: connect the OrangePi via ssh connection, pick up the screen session (serial) or powercycle the target (gpio)
+ *  pm: use LK shield and relais to powercycle the target board, here a Cyclone V SoC-FPGA Board
+ *  serial: setup a ``screen`` session via usb-to-serial-altera-uart to the target, detach and attach as needed
+
+
+#### Configuration
+
+make sure the kernel has ``CONFIG_SERIAL_ALTERA_UART`` set, it's benefitial also to turn on additional things such as ``/proc/config.gz`` support  
+
+make sure the board has the following onboard:  
+ *  ``screen``
+ *  ``dropbear``
+ *  ``eudev + tempfs`` Build (convenience)
+ * turn off taking eth0 to automatic dhcp (when using fixed IP addresses)
+
+some gpio libs/tools might be helpful, find the following gpio numbering mapped to the pin numbering  
 
 ![GPIOs](pics/rpi-gpio-pinout.png)
 
-### Example: gpio10
+in case, configure network and/or set a root password   
+
+
+#### Setting gpio10 as an example
 
 gpio10 will trigger on pin 19, make the gpio accessible, then set access direction "out" (write) or "in" (reading)  
 
