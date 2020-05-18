@@ -1,8 +1,10 @@
 # Build Container for my OrangePi One
 
-Contains a Dockerfile for building an docker image and its container for the OrangePi One using buildroot.
+Contains a Dockerfile for building an docker image and its container for the OrangePi One using buildroot.  
 
-Implicitely will run ```git clone --branch lothar/orangepi-devel https://github.com/Rubusch/buildroot.git``` inside the docker container.
+Implicitely will run ```git clone --branch lothar/orangepi-devel https://github.com/Rubusch/buildroot.git``` inside the docker container.  
+
+![OrangePi](pics/OrangePiOne.jpg)
 
 
 ## Build
