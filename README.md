@@ -53,6 +53,8 @@ $ arm-linux-gnueabihf-objdump -sD u-boot > u-boot.txt
 
 ### Login
 
+![OrangePiSerial](pics/OrangePiOne-serial-connection.jpg)
+
 u: root  
 p: N/A  
 
@@ -61,7 +63,7 @@ p: N/A
 
 Needed: Linkerkit Relais Shield, relais and cable, some wires  
 
-TODO: setup.jpg
+![OrangePiAutomation](pics/OrangePiOne-automation-setup.jpg)
 
 control the target device via OrangePi and Linker Kit Shield:  
  *  eth: connect the OrangePi via ssh connection, pick up the screen session (serial) or powercycle the target (gpio)
