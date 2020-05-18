@@ -100,7 +100,11 @@ address 192.168.200.20
 netmask 255.255.255.0
 ```
 
-in case, place a ``powercycle.sh`` script in /root  
+in case, place a ``powercycle.sh`` script in /root, and connect to the target boards GND and RST pins to trigger via relais connector  
+
+![TargetBoardsRSTPins](pics/OrangePiOne-automation-reset-pins.jpg)
+
+
 ```
 # vi /root/powercycle.sh
 
