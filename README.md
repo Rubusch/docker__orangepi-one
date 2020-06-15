@@ -55,6 +55,12 @@ $ arm-linux-gnueabihf-objdump -sD u-boot > u-boot.txt
 
 ![OrangePiSerial](pics/OrangePiOne-serial-connection.jpg)
 
+serial connection e.g. via screen  
+
+```
+$ sudo screen /dev/ttyUSB0 115200
+```
+
 u: root  
 p: N/A  
 
