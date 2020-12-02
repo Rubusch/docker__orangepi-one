@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/Rubusch/docker__orangepi-one.svg?style=shield)](https://circleci.com/gh/Rubusch/docker__orangepi-one)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+
 # Build Container for my OrangePi One
 
 Contains a Dockerfile for building an docker image and its container for the OrangePi One using buildroot.  
@@ -20,14 +24,21 @@ Use ```--no-cache``` when re-implementing the docker image.
 
 ## Usage
 
+Example: tag _20191104161353_  
+
 ```
 $ docker images
     REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
     rubuschl/orangepi-buildroot 20191104161353      cbf4cb380168        24 minutes ago      10.5GB
-    ubuntu                      xenial              5f2bf26e3524        4 days ago          123MB
+    ...
 
-$ time docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/$USER/buildroot/dl -v $PWD/output:/home/$USER/buildroot/output rubuschl/orangepi-buildroot:20191104161353
+$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/$USER/buildroot/dl -v $PWD/output:/home/$USER/buildroot/output rubuschl/orangepi-buildroot:20191104161353 /bin/bash
+
+docker $> build.sh
 ```
+
+Defaults also to ``build.sh`` if ``/bin/bash`` is omitted.  
+
 
 ## Debug
 
