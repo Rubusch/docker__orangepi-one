@@ -9,6 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ## in case docker complains for a not set USER, perhaps you forgot to use --build-arg USER=$USER
 ARG USER=""
 
+#ARG BRANCH="lothar/orangepi-devel"
+ARG BRANCH="lothar/2020.11.x"
 
 ################################################################################
 ## set up apt fully functional
@@ -77,13 +79,18 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 
 ################################################################################
 ## get (my) sources
-RUN cd /home/$USER && git clone -j4 --depth=1 --branch lothar/orangepi-devel https://github.com/Rubusch/buildroot.git buildroot
-## alternatively get official buildrooot
-#RUN git clone -j4 --depth=1 https://github.com/buildroot/buildroot.git buildroot
-RUN chown $USER:$USER -R /home/$USER
+USER $USER
 
+RUN cd /home/$USER && git clone -j4 --depth=1 --branch ${BRANCH} https://github.com/Rubusch/buildroot.git buildroot
+
+## alternatively get official buildrooot
+## NB: this will fail to build, since kconfig won't be able to build for cross device environments
+## (the mounted 'dl' and 'output' folders - I [quick]fixed this in my repo)
+#RUN git clone -j4 --depth=1 https://github.com/buildroot/buildroot.git buildroot
 
 ################################################################################
 ## command mode
+USER root
+
 COPY build.sh /usr/local/bin/build.sh
 CMD ["/bin/bash", "/usr/local/bin/build.sh"]
