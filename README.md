@@ -19,12 +19,8 @@ $ cd ./docker__buildroot/
 $ time docker build --build-arg USER=$USER -t rubuschl/orangepi-buildroot:$(date +%Y%m%d%H%M%S) .
 ```
 
-Use ```--no-cache``` when re-implementing the docker image.
-
 
 ## Usage
-
-Example: tag _20191104161353_  
 
 ```
 $ docker images
@@ -35,20 +31,6 @@ $ docker images
 $ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/$USER/buildroot/dl -v $PWD/output:/home/$USER/buildroot/output rubuschl/orangepi-buildroot:20191104161353 /bin/bash
 
 docker $> build.sh
-```
-
-Defaults also to ``build.sh`` if ``/bin/bash`` is omitted.  
-
-
-## Debug
-
-```
-$ docker images
-    REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
-    rubuschl/orangepi-buildroot 20191104161353      cbf4cb380168        24 minutes ago      10.5GB
-    ubuntu                      xenial              5f2bf26e3524        4 days ago          123MB
-
-$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/$USER/buildroot/dl -v $PWD/output:/home/$USER/buildroot/output rubuschl/orangepi-buildroot:20191104161353 /bin/bash
 ```
 
 
