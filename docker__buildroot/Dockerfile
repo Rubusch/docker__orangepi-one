@@ -33,6 +33,7 @@ RUN apt-get install -y  \
         binutils \
         unzip \
         python \
+        python3 \
         bzip2 \
         libssl-dev \
         locales \
