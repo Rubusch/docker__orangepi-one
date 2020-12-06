@@ -34,6 +34,7 @@ RUN apt-get install -y  \
         unzip \
         python \
         python3 \
+        python3-dev \
         bzip2 \
         libssl-dev \
         locales \
