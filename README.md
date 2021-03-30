@@ -11,26 +11,29 @@ Implicitely will run ```git clone --branch lothar/orangepi-devel https://github.
 ![OrangePi](pics/OrangePiOne.jpg)
 
 
-## Build
-
+## Tools Needed
 
 ```
-$ cd ./docker__buildroot/
-$ time docker build --build-arg USER=$USER -t rubuschl/orangepi-buildroot:$(date +%Y%m%d%H%M%S) .
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod a+x /usr/local/bin/docker-compose
+```
+
+NB: Where 1.28.6 is the latest version (currently not supported by devian/ubuntu package management)  
+
+
+## Build
+
+```
+$ cd docker
+$ docker-compose up
 ```
 
 
 ## Usage
 
+
 ```
-$ docker images
-    REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
-    rubuschl/orangepi-buildroot 20191104161353      cbf4cb380168        24 minutes ago      10.5GB
-    ...
-
-$ docker run --rm -ti --user=$USER:$USER --workdir=/home/$USER -v $PWD/dl:/home/$USER/buildroot/dl -v $PWD/output:/home/$USER/buildroot/output rubuschl/orangepi-buildroot:20191104161353 /bin/bash
-
-docker $> build.sh
+$ docker-compose -f ./docker-compose.yml run --rm u-boot_devel /bin/bash
 ```
 
 
