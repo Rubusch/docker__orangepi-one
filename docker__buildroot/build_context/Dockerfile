@@ -1,6 +1,5 @@
 FROM ubuntu:20.04
 MAINTAINER Lothar Rubusch <lotophagon@protonmail.com>
-WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 
 
@@ -83,7 +82,8 @@ RUN sed -i '/%sudo/s/.*/%sudo   ALL=NOPASSWD: ALL/' /etc/sudoers
 ## get (my) sources
 USER $USER
 
-RUN cd /home/$USER && git clone -j4 --depth=1 --branch ${BRANCH} https://github.com/Rubusch/buildroot.git buildroot
+WORKDIR /home/$USER
+RUN git clone -j4 --depth=1 --branch ${BRANCH} https://github.com/Rubusch/buildroot.git buildroot
 
 ## alternatively get official buildrooot
 ## NB: this will fail to build, since kconfig won't be able to build for cross device environments

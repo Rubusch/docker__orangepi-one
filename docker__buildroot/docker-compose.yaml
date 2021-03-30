@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+    orangepi_buildroot:
+        container_name: orangepi_buildroot
+        image: rubuschl/orangepi_buildroot
+        build:
+            context: build_context
+            dockerfile: Dockerfile
+            args:
+                USER: $USER
+        user: $USER              ## docker run --user=$USER
+        stdin_open: true         ## docker run -i
+        tty: true                ## docker run -t
+        #privileged: true
+
+        environment:
+          - USER
+
+        volumes:
+          - ./output:/home/$USER/buildroot/output  ## folder does not need to be around
+
+          - ./dl:/home/$USER/buildroot/dl
