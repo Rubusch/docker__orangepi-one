@@ -37,7 +37,15 @@ RUN apt-get install -y  \
         locales \
         bc \
         cpio \
-        rsync
+        rsync \
+        cvs \
+        mercurial \
+        subversion \
+        vim \
+        screen \
+        minicom \
+        x11-apps \
+        sudo
 
 ## (opt) java related packages
 #RUN apt-get install -y openjdk-8-jdk
@@ -47,17 +55,6 @@ RUN apt-get install -y  \
 
 ## (opt) graph generation
 #RUN apt-get install -y graphviz python-matplotlib
-
-## (opt) tools for debugging and working, e.g. X11-apps for testing the xserver via xclock
-RUN apt-get install -y   \
-        cvs \
-        mercurial \
-        subversion \
-        vim \
-        screen \
-        minicom \
-        x11-apps \
-        sudo
 
 
 ################################################################################
