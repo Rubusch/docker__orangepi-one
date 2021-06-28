@@ -18,6 +18,6 @@ services:
           - USER
 
         volumes:
-          - ./output:/home/$USER/buildroot/output  ## folder does not need to be around
-
-          - ./dl:/home/$USER/buildroot/dl
+          - ~/.gitconfig:/home/$USER/.gitconfig
+          - ~/.ssh:/home/$USER/.ssh
+          - ./buildroot:/home/$USER/buildroot  ## folder does not need to be around
