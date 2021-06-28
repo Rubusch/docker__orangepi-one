@@ -34,7 +34,7 @@ done
 
 
 ## initial clone
-if [[ "1" == "$(find ${YOCTO_DIR} | wc -l)" ]]; then
+if [[ "1" == "$(find ${BUILDROOT_DIR} | wc -l)" ]]; then
     cd ${MY_HOME}
 
     ## try it...
