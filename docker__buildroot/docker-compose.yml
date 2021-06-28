@@ -3,7 +3,7 @@ version: '3.8'
 services:
     orangepi_buildroot:
         container_name: orangepi_buildroot
-        image: rubuschl/orangepi_buildroot
+        image: ${USER}/orangepi_buildroot
         build:
             context: build_context
             dockerfile: Dockerfile
