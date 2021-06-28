@@ -48,5 +48,5 @@ fi
 
 ## build
 cd ${BUILDROOT_DIR}
-make ${DEFCONFIG}
-make -j8
+make ${DEFCONFIG} || exit 1
+make -j8 || exit 1
