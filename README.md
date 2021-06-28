@@ -6,6 +6,8 @@
 
 Contains a Dockerfile for building an docker image and its container for the OrangePi One using buildroot.  
 
+This is taking from a setup serving as console server for a DE0-SoC-FPGA board, together with a relais setup to powercycle the DE0 target board.  
+
 Implicitely will run ```git clone --branch lothar/orangepi-devel https://github.com/Rubusch/buildroot.git``` inside the docker container.  
 
 ![OrangePi](pics/OrangePiOne.jpg)
@@ -33,7 +35,7 @@ $ docker-compose up
 
 
 ```
-$ docker-compose -f ./docker-compose.yml run --rm u-boot_devel /bin/bash
+$ docker-compose -f ./docker-compose.yml run --rm orangepi_buildroot /bin/bash
 ```
 
 
