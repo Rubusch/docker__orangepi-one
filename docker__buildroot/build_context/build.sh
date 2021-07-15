@@ -1,8 +1,6 @@
-#!/bin/bash -e
-#
-#
+#!/bin/sh -e
 
-MY_USER=$(whoami)
+MY_USER="$(whoami)"
 DEFCONFIG="lothars__orangepi_one_defconfig"
 MY_HOME="/home/${MY_USER}"
 BUILDROOT_DIR="${MY_HOME}/buildroot"
@@ -13,28 +11,26 @@ SSH_KNOWN_HOSTS="${SSH_DIR}/known_hosts"
 #BR_BRANCH="lothar/orangepi-devel"
 BR_BRANCH="lothar/2020.11.x"
 
-
 ## permissions
 for item in "${BUILDROOT_DIR}" "${MY_HOME}/.gitconfig" "${SSH_DIR}"; do
     test -e "${item}" || continue
-    if [ ! "${MY_USER}" == "$( stat -c %U ${item} )" ]; then
+    if [ ! "${MY_USER}" = "$( stat -c %U "${item}" )" ]; then
         ## may take some time
-        sudo chown ${MY_USER}:${MY_USER} -R ${item}
+        sudo chown "${MY_USER}:${MY_USER}" -R "${item}"
     fi
 done
-
 
 ## ssh known_hosts
-touch ${SSH_KNOWN_HOSTS}
+touch "${SSH_KNOWN_HOSTS}"
 for item in "github.com" "bitbucket.org"; do
-    if [ "" == "$( grep ${item} -r ${SSH_KNOWN_HOSTS} )" ]; then
-        ssh-keyscan ${item} >> "${SSH_KNOWN_HOSTS}"
+    if [ "" = "$( grep "${item}" -r ${SSH_KNOWN_HOSTS} )" ]; then
+        ssh-keyscan "${item}" >> "${SSH_KNOWN_HOSTS}"
     fi
 done
 
-
 ## initial clone
-if [[ "1" == "$(find ${BUILDROOT_DIR} | wc -l)" ]]; then
+FIRST="$(ls -A "${BUILDROOT_DIR}")"
+if [ -z "${FIRST}" ]; then
     cd ${MY_HOME}
 
     ## try it...
@@ -47,6 +43,8 @@ if [[ "1" == "$(find ${BUILDROOT_DIR} | wc -l)" ]]; then
 fi
 
 ## build
-cd ${BUILDROOT_DIR}
-make ${DEFCONFIG} || exit 1
-make -j8 || exit 1
+cd "${BUILDROOT_DIR}"
+make "${DEFCONFIG}" || exit 1
+make -j "$(nproc)" || exit 1
+
+echo "READY."
