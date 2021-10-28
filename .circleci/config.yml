@@ -9,4 +9,4 @@ jobs:
 
      ## buildroot
      - checkout
-     - run: cd ./docker__buildroot && docker-compose up --exit-code-from orangepi_buildroot
+     - run: ./setup.sh ci
