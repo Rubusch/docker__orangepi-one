@@ -15,11 +15,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ################################################################################
 ## set up apt fully functional
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
-RUN apt-get install -y  \
+RUN sudo apt-get update && apt-get upgrade -y && apt-get autoremove -y --purge
+RUN sudo apt-get install -y  \
         apt-utils
 
-RUN apt-get install -y  \
+RUN sudo apt-get install -y  \
         cpio \
         rsync \
         cvs \
