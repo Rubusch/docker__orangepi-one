@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-    orangepi_buildroot:
+    orangepi:
         container_name: orangepi
         image: ${USER}/orangepi
         build:
