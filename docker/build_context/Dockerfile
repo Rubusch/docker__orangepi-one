@@ -3,8 +3,8 @@
 ## in case docker complains for a not set USER, perhaps you forgot to
 ## use --build-arg USER=$USER
 ARG USER="${USER}"
-ENV DOCKER_BASE="sandbox"
-ENV DOCKER_BASE_TAG="20211028"
+ARG DOCKER_BASE="sandbox"
+ARG DOCKER_BASE_TAG="20211028"
 
 
 ################################################################################
