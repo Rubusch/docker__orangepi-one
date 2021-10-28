@@ -5,3 +5,9 @@
 
 ## ignore output folder
 buildroot
+
+## docker base image
+sandbox
+
+## docker environment
+.env

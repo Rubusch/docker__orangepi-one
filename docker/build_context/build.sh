@@ -1,7 +1,5 @@
 #!/bin/sh -e
-
-MY_USER="$(whoami)"
-DEFCONFIG="lothars__orangepi_one_defconfig"
+MY_USER="${USER}"
 MY_HOME="/home/${MY_USER}"
 BUILDROOT_DIR="${MY_HOME}/buildroot"
 DL_DIR="${BUILDROOT_DIR}/dl"
@@ -10,31 +8,18 @@ SSH_DIR="${MY_HOME}/.ssh"
 SSH_KNOWN_HOSTS="${SSH_DIR}/known_hosts"
 #BR_BRANCH="lothar/orangepi-devel"
 BR_BRANCH="lothar/2020.11.x"
+DEFCONFIG="lothars__orangepi_one_defconfig"
 
-## permissions
-for item in "${BUILDROOT_DIR}" "${MY_HOME}/.gitconfig" "${SSH_DIR}"; do
-    test -e "${item}" || continue
-    if [ ! "${MY_USER}" = "$( stat -c %U "${item}" )" ]; then
-        ## may take some time
-        sudo chown "${MY_USER}:${MY_USER}" -R "${item}"
-    fi
-done
-
-## ssh known_hosts
-touch "${SSH_KNOWN_HOSTS}"
-for item in "github.com" "bitbucket.org"; do
-    if [ "" = "$( grep "${item}" -r ${SSH_KNOWN_HOSTS} )" ]; then
-        ssh-keyscan "${item}" >> "${SSH_KNOWN_HOSTS}"
-    fi
-done
+## prepare
+00_defenv.sh "${BUILDROOT_DIR}" "${MY_HOME}/.gitconfig" "${CONFIGS_DIR}"
 
 ## initial clone
-FIRST="$(ls -A "${BUILDROOT_DIR}")"
+FIRST="$(ls -A "${BUILDROOT_DIR}")" || true
 if [ -z "${FIRST}" ]; then
-    cd ${MY_HOME}
+    cd "${MY_HOME}"
 
     ## try it...
-    git clone -j4 --depth=1 --branch ${BR_BRANCH} https://github.com/Rubusch/buildroot.git ${BUILDROOT_DIR}
+    git clone -j4 --depth=1 --branch "${BR_BRANCH}" https://github.com/Rubusch/buildroot.git "${BUILDROOT_DIR}"
 
     ## alternatively get official buildrooot
     ## NB: this will fail to build, since kconfig won't be able to build for cross device environments

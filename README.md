@@ -16,18 +16,19 @@ Implicitely will run ```git clone --branch lothar/orangepi-devel https://github.
 ## Tools Needed
 
 ```
-$ sudo curl -L "https://github.com/docker/compose/releases/download/1.28.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-$ sudo chmod a+x /usr/local/bin/docker-compose
+$ sudo apt-get install -y libffi-dev libssl-dev
+$ sudo apt-get install -y python3-dev
+$ sudo apt-get install -y python3 python3-pip
+$ pip3 install docker-compose
 ```
 
-NB: Where 1.28.6 is the latest version (currently not supported by devian/ubuntu package management)  
+Make sure, ``~/.local`` is within ``$PATH`` or re-link e.g. it to ``/usr/local``.  
 
 
 ## Build
 
 ```
-$ cd docker
-$ docker-compose up
+$ ./setup.sh
 ```
 
 
@@ -35,6 +36,7 @@ $ docker-compose up
 
 
 ```
+$ cd ./docker
 $ docker-compose -f ./docker-compose.yml run --rm orangepi_buildroot /bin/bash
 ```
 
