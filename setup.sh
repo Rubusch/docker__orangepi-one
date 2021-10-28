@@ -25,7 +25,7 @@ CONTAINER="$(docker images | grep "${IMAGE}" | grep "${TAG}" | awk '{print $3}')
 
 if [ -z "${CONTAINER}" ]; then
 	git clone "https://github.com/Rubusch/docker__${IMAGE}.git" "${IMAGE}"
-	build "./${IMAGE}" "${DRYRUN}"
+	build "./${IMAGE}/docker" "${DRYRUN}"
 fi
 
 ## docker container
