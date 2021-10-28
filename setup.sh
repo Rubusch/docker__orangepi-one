@@ -1,4 +1,4 @@
-#!/bin/sh -ex
+#!/bin/sh -e
 build()
 {
 	pushd "${1}" &> /dev/null
