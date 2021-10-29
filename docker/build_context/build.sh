@@ -4,8 +4,6 @@ MY_HOME="/home/${MY_USER}"
 BUILDROOT_DIR="${MY_HOME}/buildroot"
 DL_DIR="${BUILDROOT_DIR}/dl"
 OUTPUT_DIR="${BUILDROOT_DIR}/output"
-SSH_DIR="${MY_HOME}/.ssh"
-SSH_KNOWN_HOSTS="${SSH_DIR}/known_hosts"
 #BR_BRANCH="lothar/orangepi-devel"
 BR_BRANCH="lothar/2020.11.x"
 DEFCONFIG="lothars__orangepi_one_defconfig"
@@ -27,7 +25,6 @@ if [ -z "${FIRST}" ]; then
     #git clone -j4 --depth=1 https://github.com/buildroot/buildroot.git ${BUILDROOT_DIR}
 fi
 
-## build
 cd "${BUILDROOT_DIR}"
 make "${DEFCONFIG}" || exit 1
 make -j "$(nproc)" || exit 1
