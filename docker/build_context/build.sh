@@ -9,7 +9,7 @@ BR_BRANCH="lothar/2020.11.x"
 DEFCONFIG="lothars__orangepi_one_defconfig"
 
 ## prepare
-00_defenv.sh "${BUILDROOT_DIR}" "${MY_HOME}/.gitconfig" "${CONFIGS_DIR}"
+00_defenv.sh "${BUILDROOT_DIR}"
 
 ## initial clone
 FIRST="$(ls -A "${BUILDROOT_DIR}")" || true
