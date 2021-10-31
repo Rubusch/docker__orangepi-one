@@ -24,3 +24,7 @@ services:
           - ~/.gitconfig:/home/$USER/.gitconfig
           - ~/.ssh:/home/$USER/.ssh
           - ./buildroot:/home/$USER/buildroot
+          ## folder must be around
+          - type: bind
+            source: ./build_configs
+            target: /home/$USER/configs
